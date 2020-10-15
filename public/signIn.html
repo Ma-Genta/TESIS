@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__contenedor">
+        <a href="#"
+          ><img
+            class="header__contenedor-logo"
+            src="./img/virus.svg"
+            alt="Logo"
+        /></a>
+        <label for="checkbox" class="header__contenedor-hamburger"></label>
+
+        <input type="checkbox" id="checkbox" />
+        <ul class="menu">
+          <li><a href="">informacion</a></li>
+          <li><a href="">Iniciar sesión</a></li>
+          <li><a href="">Registrarme</a></li>
+          <li><a href="">etc</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="singIn">
+      <div class="singIn__container">
+        <h2>Inicio sesión</h2>
+        <form class="singIn__container-form">
+          <input type="text" placeholder="Correo" />
+          <input type="password" placeholder="Contraseña" />
+          <button class="button">Iniciar sesión</button>
+          <div class="singIn__container-remember">
+            <label>
+              <input type="checkbox" id="cbox1" value="checkbox" />Recuerdame
+            </label>
+            <a href="/">Olvidé mi contraseña</a>
+          </div>
+        </form>
+        <section class="singIn__container-social">
+          <div>
+            <img src="./img/google-icon.png" alt="Google" />Iniciar sesión con
+            Google
+          </div>
+          <div>
+            <img src="./img/twitter-icon.png" alt="Twitter" />Iniciar sesión con
+            Twitter
+          </div>
+        </section>
+        <p class="login__container--register">
+          ¿No tienes ninguna cuenta? <a href="/">Regístrate</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="/">Términos de uso</a>
+      <a href="/">Declaración de privacidad</a>
+      <a href="/">Centro de ayuda</a>
+    </footer>
+  </body>
+</html>
