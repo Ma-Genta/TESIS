@@ -1,5 +1,6 @@
 const MongoLib = require("../BD/mongo");
-
+let date = new Date();
+date.toString();
 class PostService {
   constructor() {
     this.collection = "posts";
@@ -18,7 +19,10 @@ class PostService {
   }
 
   async createPost(post) {
-    const createdPost = await this.mongoDB.create(this.collection, post);
+    const createdPost = await this.mongoDB.create(this.collection, {
+      ...post,
+      date,
+    });
     return createdPost;
   }
 

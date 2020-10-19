@@ -6,6 +6,7 @@ const UserService = require("../services/user");
 const { validationHandler } = require("../utils/middleware/validationHandler");
 const { createUserSchema } = require("../utils/schemas/user");
 const dotenv = require("dotenv");
+const user = require("../utils/schemas/user");
 dotenv.config();
 const { SECRET } = process.env;
 
@@ -59,16 +60,33 @@ function authApi(app) {
     async (req, res, next) => {
       const { body: user } = req;
       try {
-        const createdUserId = await userService.createUser({ user });
-        res.status(201).json({
-          data: createdUserId,
-          message: "User created!",
-        });
+        if (user.password !== user.passwordRepeat) {
+          res.status(201).json({
+            message: "Contraseñas no coinciden!",
+          });
+        } else {
+          const createdUserId = await userService.createUser({ user });
+          res.status(201).json({
+            data: createdUserId,
+            message: "User created!",
+          });
+        }
       } catch (error) {
         next(error);
       }
     }
   );
+  //Todos los users
+  router.get("/", async (req, res, next) => {
+    const { tags } = req.query;
+    const users = await userService.getUsers({ tags });
+    delete users.admin;
+    delete users.password;
+    res.status(200).json({
+      data: users,
+      message: "List!",
+    });
+  });
 }
 
 module.exports = authApi;

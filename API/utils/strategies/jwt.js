@@ -1,9 +1,9 @@
-const passport = require('passport');
-const { Strategy, ExtractJwt } = require('passport-jwt');
-const boom = require('@hapi/boom');
-const UserService = require('../../services/user');
+const passport = require("passport");
+const { Strategy, ExtractJwt } = require("passport-jwt");
+const boom = require("@hapi/boom");
+const UserService = require("../../services/user");
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 const { SECRET } = process.env;
 
@@ -21,7 +21,7 @@ passport.use(
           return cb(boom.unauthorized(), false);
         }
         delete user.password;
-        cb(null, { ...user, scopes: tokenPayload.scopes });
+        cb(null, { ...user });
       } catch (error) {
         return cb(error);
       }
